@@ -19,7 +19,7 @@ jobs:
       run: npm ci
       
     - name: Build package
-      run: ng build ngx-bpmn-modeler --prod
+      run: npm run build -- ngx-bpmn-modeler --prod
       
     - name: Publish to npm
       working-directory: dist/ngx-bpmn-modeler
