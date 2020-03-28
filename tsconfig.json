@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-bpmn-modeler": [
+        "dist/ngx-bpmn-modeler/ngx-bpmn-modeler",
+        "dist/ngx-bpmn-modeler"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

@@ -1,0 +1,17 @@
+{
+  "name": "ngx-bpmn-modeler",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d3v0ps/ngx-bpmn-modeler"
+  },
+  "peerDependencies": {
+    "@angular/common": "^9.1.0",
+    "@angular/core": "^9.1.0",
+    "tslib": "^1.10.0",
+    "bpmn-js": "^5.0.4",
+    "bpmn-js-properties-panel": "^0.32.1",
+    "diagram-js-minimap": "^2.0.1"
+  }
+}
