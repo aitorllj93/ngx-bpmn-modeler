@@ -5,6 +5,8 @@ Angular [bpmn-js](https://bpmn.io/toolkit/bpmn-js/) component with Custom Proper
 
 Implements `ControlValueAccesor`.
 
+[Demo](https://d3v0ps.github.io/ngx-bpmn-modeler)
+
 
 ## Getting Started
 

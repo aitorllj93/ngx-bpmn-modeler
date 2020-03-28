@@ -1,27 +1,101 @@
-# NgxBpmnModeler
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+# ngx-bpmn-modeler
 
-## Development server
+Angular [bpmn-js](https://bpmn.io/toolkit/bpmn-js/) component with Custom Properties Panel Support.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Implements `ControlValueAccesor`.
 
-## Code scaffolding
+[Demo](https://d3v0ps.github.io/ngx-bpmn-modeler)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### 1. Install packages
+```sh
+# bpmn-js dependencies
+npm i bpmn-js bpmn-js-properties-panel diagram-js-minimap
+# this package
+npm i ngx-bpmn-modeler
+```
 
-## Running unit tests
+### 2. Include bpmn-js stylesheets
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```scss
+@import '~bpmn-js/dist/assets/diagram-js';
+@import '~bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css';
+@import '~bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css';
+@import '~diagram-js-minimap/assets/diagram-js-minimap';
+```
 
-## Running end-to-end tests
+### 3. Import Module
+```typescript
+import { NgxBpmnModelerModule } from 'ngx-bpmn-modeler';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    FormsModule,
+    NgxBpmnModelerModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
 
-## Further help
+### 4. Include the component
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```html
+<ngx-bpmn-modeler [(ngModel)]="xmlModel">
+</ngx-bpmn-modeler>
+```
+
+## Inputs
+
+| name | description |
+| ---- | ----------- |
+| wrapperClass | Wrapper element custom CSS Class |
+| containerClass | Container element custom CSS Class |
+| propertiesClass | Properties Panel element custom CSS Class |
+| propertiesProvider | Your custom Properties Provider. [See bpmn-js properties panel extension](https://github.com/bpmn-io/bpmn-js-examples/tree/master/properties-panel-extension) |
+| propertiesDescriptor | Your custom Properties Descriptor. [See bpmn-js properties panel extension](https://github.com/bpmn-io/bpmn-js-examples/tree/master/properties-panel-extension) |
+| additionalModules | Additional BPMN-js modules. |
+
+## Tips
+
+### Adding Custom Properties
+
+You can see how at [bpmn-js examples](https://github.com/bpmn-io/bpmn-js-examples/tree/master/properties-panel-extension)
+
+If your customizations are simple, you can omit `PropertiesProvider` by adding some extra fields to your `PropertiesDescriptor`.
+
+```typescript
+const myCustomPropertiesDescriptor = {
+  id: 'world',
+  name: 'World',
+  label: 'World Properties',
+  prefix: 'world',
+  uri: 'http://world',
+  xml: {
+    tagAlias: 'lowerCase'
+  },
+  associations: [],
+  types: [
+    {
+      name: 'CustomizedSequenceFlow',
+      extends: [
+        'bpmn:SequenceFlow'
+      ],
+      properties: [
+        {
+          name: 'description',
+          description: 'Description of the sequence',
+          label : 'Description',
+          isAttr: true,
+          type: 'String'
+        }
+      ]
+    },
+  ]
+}
+```
