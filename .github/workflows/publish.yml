@@ -1,0 +1,28 @@
+name: npm-publish
+
+on:
+  release:
+    types: [created]
+    
+jobs:
+  npm-publish:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build package
+      run: npm run build -- ngx-bpmn-modeler --prod
+      
+    - name: Publish to npm
+      working-directory: dist/ngx-bpmn-modeler
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
