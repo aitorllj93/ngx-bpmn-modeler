@@ -2,6 +2,7 @@
 # ngx-bpmn-modeler
 
 [![npm](https://img.shields.io/npm/v/ngx-bpmn-modeler)](https://www.npmjs.com/package/ngx-bpmn-modeler)
+[![demo](https://img.shields.io/badge/-demo-ff69b4)](https://d3v0ps.github.io/ngx-bpmn-modeler)
 
 Angular [bpmn-js](https://bpmn.io/toolkit/bpmn-js/) component with Custom Properties Panel Support.
 
